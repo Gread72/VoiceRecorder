@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" width="100%" height="100%"
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		creationComplete="creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.gread.voicerecorder.mediators.*;
+			
+			import mx.events.FlexEvent;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+//				var mediator:RecorderMediator = new RecorderMediator();
+				var mediator:SW3RecorderMediator2 = new SW3RecorderMediator2();
+				mediator.view = this;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="0xffffff"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:VGroup width="100%" height="100%" gap="0">
+		<s:Group width="100%">
+			<s:Rect width="100%" height="42">
+				<s:fill>
+					<s:SolidColor color="0xc7b299"/>
+				</s:fill>
+			</s:Rect>
+			<s:Label text="Recorder" fontSize="36" width="100%" paddingTop="5" />	
+		</s:Group>
+		
+		<s:Rect width="100%" height="5">
+			<s:fill>
+				<s:SolidColor color="0x000000"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:VGroup width="100%" paddingTop="5" paddingBottom="10" paddingLeft="5" paddingRight="5">
+			<s:Label id="progressLabel" includeInLayout="false"/>
+			<s:HGroup horizontalAlign="center" verticalAlign="middle" width="100%">
+				<s:Button id="recordButton" label="Record" width="100%" />
+				<s:Button id="playButton" label="Play" width="100%" />
+			</s:HGroup>
+		</s:VGroup>
+		
+		<s:Rect width="100%" height="1">
+			<s:fill>
+				<s:SolidColor color="0xcccccc"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:VGroup paddingTop="5" paddingBottom="10" paddingLeft="5" paddingRight="5">
+			<s:CheckBox id="noiseReduce" label="Noise Reduction - Band Pass Filter" selected="false" />
+			<s:CheckBox id="saveSampleChk" label="Save as" selected="false" />
+			<s:TextInput id="saveSampleName" text="mysample.mp3" width="100%" visible="{saveSampleChk.selected}" 
+						 enabled="{saveSampleChk.selected}" includeInLayout="{saveSampleChk.selected}" />
+		</s:VGroup>
+	</s:VGroup>
+	
+	
+	
+</s:Group>

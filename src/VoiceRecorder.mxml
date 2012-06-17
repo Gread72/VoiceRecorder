@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:viewVR="com.gread.voicerecorder.view.*"
+			   creationComplete="creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.gread.voicerecorder.mediators.VoiceRecorderMediator;
+			
+			import mx.events.FlexEvent;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				var mediator:VoiceRecorderMediator = new VoiceRecorderMediator();
+				mediator.view = this;
+			}
+			
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Scroller height="100%" width="100%" verticalScrollPolicy="on">
+		
+		<s:Group width="100%" height="100%">
+			<s:Rect width="100%" height="100%">
+				<s:fill>
+					<s:SolidColor color="0x000000"/>
+				</s:fill>
+			</s:Rect>
+			
+			<!-- <s:ButtonBar id="buttonBar" width="100%" height="50" includeInLayout="false" visible="false"/>-->
+			
+			<s:VGroup width="100%" height="100%" horizontalAlign="center">
+				<s:Group width="100%">
+					<s:Rect id="backgroundTitleLbl" width="100%" height="100%">
+						<s:fill>
+							<s:SolidColor id="bgColorTitleLbl" color="0x555555"/>
+						</s:fill>
+					</s:Rect>
+					<s:VGroup width="100%" height="65" horizontalAlign="center" paddingTop="10">
+						<s:Label id="titleLbl" text="VoiceRecorder" fontSize="54" color="0xFFFFFF" />
+					</s:VGroup>
+				</s:Group>
+				<s:VGroup width="100%" height="70" horizontalAlign="center" paddingTop="10">
+					<s:Label id="timeIndicatorLbl" text="00:00:00" fontSize="72" color="0xFFFFFF" />
+				</s:VGroup>
+				
+				<s:VGroup width="98%" gap="40">
+					<viewVR:RecorderView id="viewRecorder"/>
+					
+					<viewVR:PlayerView id="viewPlayer"/>
+				</s:VGroup>
+			</s:VGroup>
+			
+			
+		</s:Group>
+	</s:Scroller>
+	
+	
+</s:Application>

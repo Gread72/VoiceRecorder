@@ -7,3 +7,7 @@ bin-release/
 .flexProperties
 .settings/
 .project
+.DS_Store
+
+*.mp3
+blackberry-tablet.xml

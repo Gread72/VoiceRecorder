@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" width="100%" height="100%"
+		  xmlns:s="library://ns.adobe.com/flex/spark"  creationComplete="creationCompleteHandler(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import com.gread.voicerecorder.mediators.*;
+			
+			import mx.events.FlexEvent;
+			
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				var mediator:PlayerMediator = new PlayerMediator();
+				mediator.view = this;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="0xffffff"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:VGroup width="100%" height="100%" gap="0">
+		<s:Group width="100%" >
+			<s:Rect width="100%" height="42">
+				<s:fill>
+					<s:SolidColor color="0xc7b299"/>
+				</s:fill>
+			</s:Rect>
+			<s:Label text="Player" fontSize="36" width="100%" paddingTop="5" />
+		</s:Group>
+		
+		<s:Rect width="100%" height="5">
+			<s:fill>
+				<s:SolidColor color="0x000000"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:Scroller height="250" width="100%" verticalScrollPolicy="on">
+			<s:HGroup horizontalAlign="left" verticalAlign="middle" width="100%" height="100%">
+				<s:List id="audioList" width="100%" height="100%" itemRenderer="com.gread.voicerecorder.view.itemrenderer.PlayerItemRenderer"/>
+			</s:HGroup>
+		</s:Scroller>
+		
+		<s:Rect width="100%" height="1">
+			<s:fill>
+				<s:SolidColor color="0xcccccc"/>
+			</s:fill>
+		</s:Rect>
+		
+		<s:VGroup paddingTop="5" paddingBottom="10" paddingLeft="5" paddingRight="5">
+			<s:CheckBox id="playSettingsChk" label="Noise Reduction Settings" selected="false"  />
+			<s:VGroup paddingLeft="20" visible="{playSettingsChk.selected}" enabled="{playSettingsChk.selected}" includeInLayout="{playSettingsChk.selected}">
+				<s:CheckBox id="noiseReduce1" label="Tone Filter" selected="{playSettingsChk.selected}"  />
+				<s:CheckBox id="noiseReduce2" label="Band Pass Filter" selected="{playSettingsChk.selected}" />	
+			</s:VGroup>
+		</s:VGroup>
+		
+	</s:VGroup>
+	
+</s:Group>
