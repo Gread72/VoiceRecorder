@@ -11,3 +11,5 @@ bin-release/
 
 *.mp3
 blackberry-tablet.xml
+VoiceRecorder.apk
+src/icons/
